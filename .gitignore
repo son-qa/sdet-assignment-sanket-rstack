@@ -1,0 +1,12 @@
+/.idea/
+node_modules/*
+/.env.*
+
+!logs/.gitkeep
+*.log
+
+screenshots/*
+!screenshots/.gitkeep
+
+reports/*
+!reports/.gitkeep

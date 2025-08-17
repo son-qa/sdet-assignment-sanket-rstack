@@ -1,0 +1,48 @@
+name: End-to-End Tests
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Creat .env.qa file
+        run: |
+          echo "BASE_URL=${{ secrets.BASE_URL_QA }}" >> .env.qa
+          echo "USEREMAIL=${{ secrets.USEREMAIL_QA }}" >> .env.qa
+          echo "PASSWORD=${{ secrets.PASSWORD_QA }}" >> .env.qa
+
+      - name: Execute tests on QA environment and generate reports
+        run: npm run test:qa:report
+
+      - name: Upload cucumber HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-cucumber-html-report
+          path: reports/html/
+          retention-days: 10
+
+      - name: Upload Test Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-screenshots
+          path: |
+            screenshots/
+          retention-days: 10

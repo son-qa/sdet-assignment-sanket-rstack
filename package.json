@@ -1,0 +1,36 @@
+{
+  "name": "sdet-assignment-sanket-rstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "report": "node ./support/report.ts",
+    "test:report": "npm run test && npm run report",
+    "test:dev": "cross-env ENV=dev npm run test",
+    "test:qa": "cross-env ENV=qa npm run test",
+    "test:qa:report": "cross-env ENV=qa npm run test && npm run report",
+    "test:dev:report": "cross-env ENV=qa npm run test && npm run report"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@cucumber/cucumber": "^12.1.0",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "playwright": "^1.54.2",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/cucumber": "^6.0.1",
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^24.3.0",
+    "cross-env": "^10.0.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

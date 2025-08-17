@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Install playwrigh browsers
-        run: npx install playwright
+        run: npx playwright install
 
       - name: Creat .env.qa file
         run: |

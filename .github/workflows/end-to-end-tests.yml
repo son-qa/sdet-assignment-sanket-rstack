@@ -10,6 +10,9 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
 
+    env:
+      HEADLESS: true
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,7 +25,7 @@ jobs:
       - name: Install NPM dependencies
         run: npm ci
 
-      - name: Install playwrigh browsers
+      - name: Install playwright browsers
         run: npx playwright install
 
       - name: Creat .env.qa file

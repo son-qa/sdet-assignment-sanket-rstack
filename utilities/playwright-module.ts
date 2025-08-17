@@ -8,8 +8,11 @@ export class PlaywrightModule {
     page!: Page;
 
     async start() {
+        const headless = process.env.HEADLESS
+            ? process.env.HEADLESS === "true"
+            : true;
         this.browser = await chromium.launch({
-            headless: true,
+            headless: headless,
             args: ['--start-maximized']
         });
         const context = await this.browser.newContext();

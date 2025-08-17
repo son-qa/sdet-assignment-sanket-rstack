@@ -24,6 +24,8 @@ Notes:
 ---
 ## Test execution and reporting
 
+**By default, the tests run in headless mode, set HEADLESS flag to false in environment if headed mode is required**
+
 To only execute tests `npm run test` (by default it will run in QA env)
 
 To generate reports once tests are executed run `npm run report`
